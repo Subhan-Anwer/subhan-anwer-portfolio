@@ -10,7 +10,7 @@ import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 import { PersonalDetails } from "../../sanity.types";
-import { imageUrl } from "@/app/lib/imageUrl";
+import { imageUrl, fileUrl } from "@/app/lib/imageUrl";
 
 const COLORS_TOP = ["#1367C6", "#13FFAA", "#CE84CF", "#DD335C"];
 
@@ -92,29 +92,33 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
 
         <p className="my-6 max-w-xl ">{personalDetails.about}</p>
 
-        <Link
-          href="/SUBHAN_ANWER_RESUME.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          download
-        >
-          <motion.button
-            style={{
-              border,
-              boxShadow,
-            }}
-            whileHover={{
-              scale: 1.015,
-            }}
-            whileTap={{
-              scale: 0.985,
-            }}
-            className="flex w-fit items-center gap-2 rounded-full px-4 py-2"
-          >
-            Download CV
-            <FiArrowRight />
-          </motion.button>
-        </Link>
+        
+            <Link
+              href={
+                fileUrl(personalDetails.cv)?.url
+                  ? `${fileUrl(personalDetails.cv).url}?dl=Subhan_Anwer_Resume.pdf`
+                  : "/SUBHAN_ANWER_RESUME.pdf"
+              }
+              rel="noopener noreferrer"
+              
+            >
+              <motion.button
+                style={{
+                  border,
+                  boxShadow,
+                }}
+                whileHover={{
+                  scale: 1.015,
+                }}
+                whileTap={{
+                  scale: 0.985,
+                }}
+                className="flex w-fit items-center gap-2 rounded-full px-4 py-2"
+              >
+                Download CV
+                <FiArrowRight />
+              </motion.button>
+            </Link>
       </div>
 
       <div className="bg-circle-container">
