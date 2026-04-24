@@ -12,7 +12,53 @@
  * ---------------------------------------------------------------------------------
  */
 
+export declare const internalGroqTypeReferenceTo: unique symbol;
+
 // Source: schema.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type FeaturedProjects = {
+  _id: string;
+  _type: "featuredProjects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
+  category?: string;
+  year?: number;
+  serialOrder?: number;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type Services = {
   _id: string;
   _type: "services";
@@ -44,12 +90,7 @@ export type TechStack = {
   _rev: string;
   techName?: string;
   techLogo?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -58,20 +99,11 @@ export type TechStack = {
   serialOrder?: number;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+export type SanityFileAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
 };
 
 export type PersonalDetails = {
@@ -82,24 +114,14 @@ export type PersonalDetails = {
   _rev: string;
   name?: string;
   profileImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
   cv?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
+    asset?: SanityFileAssetReference;
     media?: unknown;
     _type: "file";
   };
@@ -214,11 +236,14 @@ export type Slug = {
 };
 
 export type AllSanitySchemaTypes =
+  | SanityImageAssetReference
+  | FeaturedProjects
+  | SanityImageCrop
+  | SanityImageHotspot
   | Services
   | CodeStats
   | TechStack
-  | SanityImageCrop
-  | SanityImageHotspot
+  | SanityFileAssetReference
   | PersonalDetails
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -230,9 +255,7 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | Slug;
 
-export declare const internalGroqTypeReferenceTo: unique symbol;
-
-// Source: src\sanity\lib\getCodeStats.ts
+// Source: src/sanity/lib/getCodeStats.ts
 // Variable: CODE_STATS_QUERY
 // Query: *[_type == "codeStats"] | order(serialOrder asc)
 export type CODE_STATS_QUERY_RESULT = Array<{
@@ -247,7 +270,31 @@ export type CODE_STATS_QUERY_RESULT = Array<{
   serialOrder?: number;
 }>;
 
-// Source: src\sanity\lib\getPersonalDetails.ts
+// Source: src/sanity/lib/getFeaturedProjects.ts
+// Variable: FEATURED_PROJECTS_QUERY
+// Query: *[_type == "featuredProjects"] | order(serialOrder asc)
+export type FEATURED_PROJECTS_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "featuredProjects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
+  category?: string;
+  year?: number;
+  serialOrder?: number;
+}>;
+
+// Source: src/sanity/lib/getPersonalDetails.ts
 // Variable: PERSONAL_DETAILS_QUERY
 // Query: *[_type == "personalDetails"][0]
 export type PERSONAL_DETAILS_QUERY_RESULT = {
@@ -258,24 +305,14 @@ export type PERSONAL_DETAILS_QUERY_RESULT = {
   _rev: string;
   name?: string;
   profileImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
   cv?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
+    asset?: SanityFileAssetReference;
     media?: unknown;
     _type: "file";
   };
@@ -287,7 +324,7 @@ export type PERSONAL_DETAILS_QUERY_RESULT = {
   mapLink?: string;
 } | null;
 
-// Source: src\sanity\lib\getServices.ts
+// Source: src/sanity/lib/getServices.ts
 // Variable: SERVICES_QUERY
 // Query: *[_type == "services"] | order(serialOrder asc)
 export type SERVICES_QUERY_RESULT = Array<{
@@ -301,7 +338,7 @@ export type SERVICES_QUERY_RESULT = Array<{
   serialOrder?: number;
 }>;
 
-// Source: src\sanity\lib\getTechStack.ts
+// Source: src/sanity/lib/getTechStack.ts
 // Variable: TECH_STACK_QUERY
 // Query: *[_type == "techStack"] | order(serialOrder asc)
 export type TECH_STACK_QUERY_RESULT = Array<{
@@ -312,12 +349,7 @@ export type TECH_STACK_QUERY_RESULT = Array<{
   _rev: string;
   techName?: string;
   techLogo?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -331,7 +363,8 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n            *[_type == "codeStats"] | order(serialOrder asc)\n        ': CODE_STATS_QUERY_RESULT;
-    '\n            *[_type == "personalDetails"][0]\n            \n        ': PERSONAL_DETAILS_QUERY_RESULT;
+    '\n            *[_type == "featuredProjects"] | order(serialOrder asc)\n        ': FEATURED_PROJECTS_QUERY_RESULT;
+    '\n            *[_type == "personalDetails"][0]\n        ': PERSONAL_DETAILS_QUERY_RESULT;
     '\n            *[_type == "services"] | order(serialOrder asc)\n        ': SERVICES_QUERY_RESULT;
     '\n            *[_type == "techStack"] | order(serialOrder asc)\n        ': TECH_STACK_QUERY_RESULT;
   }
