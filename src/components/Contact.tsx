@@ -81,6 +81,7 @@ const Contact = ({ personalDetails }: {personalDetails: PersonalDetails}) => {
           >
             <iframe
               src={personalDetails.mapLink}
+              title="Subhan Anwer office location on Google Maps"
               width="100%"
               height="100%"
               style={{ border: 0 }}
