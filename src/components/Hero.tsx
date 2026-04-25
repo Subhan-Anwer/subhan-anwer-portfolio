@@ -61,6 +61,8 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
             alt="Subhan Anwer profile photo - frontend website developer"
             width={250}
             height={250}
+            loading="eager"
+            fetchPriority="high"
           />
         )}
         <div className="flex flex-col sm:flex-row bg-white/10 shadow-xl p-3 rounded-3xl justify-center items-center sm:space-x-2 gap-3 mb-4 sm:mt-0 mt-6">

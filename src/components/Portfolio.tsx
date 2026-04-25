@@ -162,18 +162,17 @@ const Portfolio = () => {
                 </svg>
               </button>
 
-              <div className="flex space-x-2">
+              <div className="flex">
                 {featuredProjects.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-purple-500 scale-125"
-                        : "bg-gray-600 hover:bg-gray-500"
-                    }`}
+                    className="p-2 flex items-center justify-center"
                     aria-label={`Go to project ${index + 1}`}
-                  />
+                  >
+                    <span className={`block w-4 h-4 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-purple-500 scale-125" : "bg-gray-600 hover:bg-gray-500"}`}
+                    />
+                  </button>
                 ))}
               </div>
 
@@ -234,6 +233,7 @@ const Portfolio = () => {
                           width={800}
                           height={450}
                           priority={selectedProject.serialOrder === 1}
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                           loading={
                             selectedProject.serialOrder &&
                             selectedProject.serialOrder <= 3

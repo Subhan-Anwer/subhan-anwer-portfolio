@@ -5,7 +5,7 @@ import { CodeStats } from "../../sanity.types";
 
 const CodeStatsSection = ({ codeStats }: { codeStats: CodeStats[] }) => {
   const ref = React.useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.section
@@ -41,7 +41,8 @@ const CodeStatsSection = ({ codeStats }: { codeStats: CodeStats[] }) => {
                 transition={{
                   delay: 0.4 + index * 0.1,
                   duration: 0.4,
-                  type: "spring",
+                  type: "tween",
+                  ease: "easeOut",
                 }}
                 className="text-5xl font-bold text-purple-300 mb-2"
               >
