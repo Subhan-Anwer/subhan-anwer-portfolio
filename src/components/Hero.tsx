@@ -67,21 +67,24 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
           <div className="flex items-center justify-center space-x-2">
             <Image
               src="/obj1.png"
-              alt="object"
+              alt=""
+              role="presentation"
               width={30}
               height={30}
               className="rounded-2xl mx-auto"
             />
             <Image
               src="/obj1.png"
-              alt="object"
+              alt=""
+              role="presentation"
               width={30}
               height={30}
               className="rounded-2xl mx-auto"
             />
             <Image
               src="/obj1.png"
-              alt="object"
+              alt=""
+              role="presentation"
               width={30}
               height={30}
               className="rounded-2xl mx-auto"
