@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://subhan-anwer-portfolio.vercel.app/
-
-# Sitemaps
-Sitemap: https://subhan-anwer-portfolio.vercel.app/sitemap.xml
