@@ -18,4 +18,5 @@ export const structure: StructureResolver = (S) =>
         ),
       S.listItem().title("Code Stats").child(S.documentTypeList("codeStats")),
       S.listItem().title("Services").child(S.documentTypeList("services")),
+      S.listItem().title("Logo Animation").child(S.documentTypeList("logoAnimation")),
     ]);

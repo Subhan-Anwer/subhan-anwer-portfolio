@@ -40,7 +40,7 @@ export const logoAnimationType = defineType({
       prepare(select) {
           return {
                 title: `${select.subtitle}. ${select.title}`,
-                media: "logoImage",
+                media: select.media,
           }
       }
   },
