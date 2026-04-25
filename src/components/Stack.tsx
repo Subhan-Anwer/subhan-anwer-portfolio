@@ -19,7 +19,7 @@ const Stack = async () => {
                 {stack.techLogo && (
                   <Image
                     src={imageUrl(stack.techLogo).url()}
-                    alt={stack.techName || "Tech Stack Logo"}
+                    alt={stack.techName ? `${stack.techName} icon` : "Technology icon"}
                     width={100}
                     height={100}
                     className="sm:w-32 sm:h-32 w-25 h-25 hover:scale-105 transition-transform duration-200 ease-in-out"
