@@ -229,7 +229,7 @@ const Portfolio = () => {
                             imageUrl(selectedProject.image).url() ||
                             "/placeholder.png"
                           }
-                          alt={selectedProject.title || "Project Image"}
+                          alt={`Screenshot of ${selectedProject.title || "featured project"}`}
                           className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
                           width={800}
                           height={450}
