@@ -21,7 +21,6 @@ export const logoAnimationType = defineType({
       name: "serialOrder",
       title: "Serial Order",
       type: "number",
-      readOnly: true,
       initialValue: async (params, context) => {
         const { getClient } = context;
         const client = getClient({ apiVersion: '2023-01-01' });
