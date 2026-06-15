@@ -81,7 +81,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
               role="presentation"
               width={30}
               height={30}
-              className="rounded-2xl mx-auto"
+              className="rounded-2xl mx-auto w-auto h-auto"
             />
             <Image
               src="/obj1.png"
@@ -89,7 +89,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
               role="presentation"
               width={30}
               height={30}
-              className="rounded-2xl mx-auto"
+              className="rounded-2xl mx-auto w-auto h-auto"
             />
           </div>
           <p>{personalDetails.happyClients}+ Happy Clients</p>
@@ -97,33 +97,31 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
 
         <p className="my-6 max-w-xl ">{personalDetails.about}</p>
 
-        
-            <Link
-              href={
-                fileUrl(personalDetails.cv)?.url
-                  ? `${fileUrl(personalDetails.cv).url}?dl=Subhan_Anwer_Resume.pdf`
-                  : "/SUBHAN_ANWER_RESUME.pdf"
-              }
-              rel="noopener noreferrer"
-              
-            >
-              <motion.button
-                style={{
-                  border,
-                  boxShadow,
-                }}
-                whileHover={{
-                  scale: 1.015,
-                }}
-                whileTap={{
-                  scale: 0.985,
-                }}
-                className="flex w-fit items-center gap-2 rounded-full px-4 py-2"
-              >
-                Download CV
-                <FiArrowRight />
-              </motion.button>
-            </Link>
+        <Link
+          href={
+            fileUrl(personalDetails.cv)?.url
+              ? `${fileUrl(personalDetails.cv).url}?dl=Subhan_Anwer_Resume.pdf`
+              : "/SUBHAN_ANWER_RESUME.pdf"
+          }
+          rel="noopener noreferrer"
+        >
+          <motion.button
+            style={{
+              border,
+              boxShadow,
+            }}
+            whileHover={{
+              scale: 1.015,
+            }}
+            whileTap={{
+              scale: 0.985,
+            }}
+            className="flex w-fit items-center gap-2 rounded-full px-4 py-2"
+          >
+            Download CV
+            <FiArrowRight />
+          </motion.button>
+        </Link>
       </div>
 
       <div className="bg-circle-container">
