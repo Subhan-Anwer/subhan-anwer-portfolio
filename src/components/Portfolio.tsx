@@ -51,19 +51,19 @@ const Portfolio = () => {
   const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #0a0a0a 50%, ${color})`;
 
   // Auto-play functionality
-  useEffect(() => {
-    if (isAutoPlaying && featuredProjects.length > 0) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % featuredProjects.length);
-      }, 5000);
-    }
+  // useEffect(() => {
+  //   if (isAutoPlaying && featuredProjects.length > 0) {
+  //     intervalRef.current = setInterval(() => {
+  //       setCurrentIndex((prev) => (prev + 1) % featuredProjects.length);
+  //     }, 5000);
+  //   }
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isAutoPlaying, featuredProjects.length]);
+  //   return () => {
+  //     if (intervalRef.current) {
+  //       clearInterval(intervalRef.current);
+  //     }
+  //   };
+  // }, [isAutoPlaying, featuredProjects.length]);
 
   const goToNext = () => {
     setDirection(1);
@@ -200,7 +200,7 @@ const Portfolio = () => {
 
           {/* Project Showcase */}
           <div className="lg:w-1/2 relative">
-            <div className="relative h-[500px] overflow-hidden rounded-2xl border border-white/20 backdrop-blur-3xl bg-gray-900/30">
+            <div className="relative md:h-[500px] h-[200px] overflow-hidden rounded-2xl border border-white/20 backdrop-blur-3xl bg-gray-900/30">
               <AnimatePresence mode="sync" custom={direction}>
                 <motion.div
                   key={selectedProject._id}

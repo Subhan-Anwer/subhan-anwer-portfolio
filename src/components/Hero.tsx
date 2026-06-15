@@ -73,7 +73,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
               role="presentation"
               width={30}
               height={30}
-              className="rounded-2xl mx-auto"
+              className="rounded-2xl mx-auto w-auto h-auto"
             />
             <Image
               src="/obj1.png"
