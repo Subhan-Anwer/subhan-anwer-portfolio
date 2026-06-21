@@ -22,24 +22,20 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type FeaturedProjects = {
+export type LogoAnimation = {
   _id: string;
-  _type: "featuredProjects";
+  _type: "logoAnimation";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  description?: string;
-  image?: {
+  logoTitle?: string;
+  logoImage?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  link?: string;
-  category?: string;
-  year?: number;
   serialOrder?: number;
 };
 
@@ -79,6 +75,27 @@ export type CodeStats = {
   statNumber?: string;
   statTitle?: string;
   statDescription?: string;
+  serialOrder?: number;
+};
+
+export type FeaturedProjects = {
+  _id: string;
+  _type: "featuredProjects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
+  category?: string;
+  year?: number;
   serialOrder?: number;
 };
 
@@ -131,6 +148,8 @@ export type PersonalDetails = {
   email?: string;
   address?: string;
   mapLink?: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -237,11 +256,12 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | FeaturedProjects
+  | LogoAnimation
   | SanityImageCrop
   | SanityImageHotspot
   | Services
   | CodeStats
+  | FeaturedProjects
   | TechStack
   | SanityFileAssetReference
   | PersonalDetails
@@ -322,6 +342,8 @@ export type PERSONAL_DETAILS_QUERY_RESULT = {
   email?: string;
   address?: string;
   mapLink?: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
 } | null;
 
 // Source: src/sanity/lib/getServices.ts

@@ -59,6 +59,20 @@ export const personalDetailsType = defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "githubUrl",
+      title: "GitHub URL",
+      type: "url",
+      validation: (rule) =>
+        rule.uri({ scheme: ["http", "https"] }),
+    }),
+    defineField({
+      name: "linkedinUrl",
+      title: "LinkedIn URL",
+      type: "url",
+      validation: (rule) =>
+        rule.uri({ scheme: ["http", "https"] }),
+    }),
   ],
   preview: {
     select: {
