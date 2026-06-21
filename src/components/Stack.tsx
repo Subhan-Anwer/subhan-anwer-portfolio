@@ -8,12 +8,12 @@ const Stack = async () => {
   return (
     <section id="stack" className="py-16 glass">
       <div className="max-w-[1200px] mx-auto px-4 text-center">
-        <h2 className="text-5xl text-gray-200 font-bold mb-4">My Stack</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 ">
+        <h2 className="text-5xl text-gray-200 font-bold mb-6 sm:mb-4">My Stack</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-1 sm:gap-2 ">
           {techStack.map((stack) => (
             <div
               key={stack._id}
-              className="flex items-center justify-center flex-col rounded-xl p-4"
+              className="flex items-center justify-center flex-col rounded-xl p-2 sm:p-4"
             >
               <div className="mb-4 bg-white/10 rounded-xl p-4">
                 {stack.techLogo && (
