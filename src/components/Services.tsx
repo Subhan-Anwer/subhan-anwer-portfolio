@@ -10,7 +10,7 @@ const Services = async () => {
         className="text-white px-6 md:px-12 py-16 md:py-20"
       >
         <div className="container mx-auto flex flex-col lg:flex-row ">
-          <div className="lg:w-1/4 md:w-2/4 mnpmr-8 mb-12 lg:mb-0">
+          <div className="lg:w-1/4 md:w-2/4 pr-8 mb-12 lg:mb-0">
             <h2 className="text-5xl text-purple-300 font-extrabold sticky top-20">
               SERVICES
             </h2>
