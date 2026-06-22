@@ -11,8 +11,7 @@ const poppins = Poppins({
   weight: ["100", "200", "400", "700", "900"],
 });
 
-// UPDATE WHEN CUSTOM DOMAIN IS READY — replace with https://subhananwer.com
-const SITE_URL = "https://subhan-anwer-portfolio.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://subhan-anwer-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

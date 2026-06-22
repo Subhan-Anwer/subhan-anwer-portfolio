@@ -1,5 +1,4 @@
-// UPDATE WHEN CUSTOM DOMAIN IS READY — replace with https://subhananwer.com
-const SITE_URL = "https://subhan-anwer-portfolio.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://subhan-anwer-portfolio.vercel.app";
 
 export default function JsonLd() {
   const personSchema = {
