@@ -7,7 +7,7 @@ const Contact = ({ personalDetails }: {personalDetails: PersonalDetails}) => {
     return (
       <section
         id="contact"
-        className="overflow-x-clip py-32 text-whitemax-w-[1200px] mx-auto px-8"
+        className="overflow-x-clip py-32 text-white mx-auto px-8"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
