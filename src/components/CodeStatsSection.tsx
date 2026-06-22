@@ -35,7 +35,7 @@ const CodeStatsSection = ({ codeStats }: { codeStats: CodeStats[] }) => {
               transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
               className="flex flex-col"
             >
-              <motion.h3
+              <motion.p
                 initial={{ scale: 0.5 }}
                 animate={isInView ? { scale: 1 } : { scale: 0.5 }}
                 transition={{
@@ -47,7 +47,7 @@ const CodeStatsSection = ({ codeStats }: { codeStats: CodeStats[] }) => {
                 className="text-5xl font-bold text-purple-300 mb-2"
               >
                 {stat.statNumber}
-              </motion.h3>
+              </motion.p>
 
               <motion.p
                 initial={{ opacity: 0 }}
