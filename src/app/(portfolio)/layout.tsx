@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import { SanityLive } from "@/sanity/lib/live";
 import JsonLd from "@/components/JsonLd";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
         <main>
           <Navbar />
           {children}
+          <Footer />
         </main>
         <SanityLive />
       </body>
