@@ -15,7 +15,7 @@ const nextConfig = {
         source: "/(.*)",
         headers: [
           {
-            key: "Content-Security-Policy-Report-Only",
+            key: "Content-Security-Policy",
             value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://cdn.sanity.io; font-src 'self' data:; connect-src 'self' https://*.sanity.io wss://*.sanity.io https://vitals.vercel-insights.com; frame-ancestors 'self';",
           },
           {
