@@ -1,22 +1,26 @@
+import { getPersonalDetails } from "@/sanity/lib/getPersonalDetails";
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://subhan-anwer-portfolio.vercel.app";
 
-export default function JsonLd() {
+export default async function JsonLd() {
+  const pd = await getPersonalDetails();
+  // Ensure we have an object to access properties from
+  const details = Array.isArray(pd) ? pd[0] || {} : pd || {};
+
   const personSchema = {
-    "@context": "https://schema.org",
     "@type": "Person",
-    name: "Subhan Anwer",
+    name: details.name || "Subhan Anwer",
     url: SITE_URL,
-    image: `${SITE_URL}/profilepic.png`,
+    image: `${SITE_URL}/og-image.png`,
     jobTitle: "Frontend Developer",
-    description:
-      "Subhan Anwer is a frontend developer in Karachi specializing in Next.js, React, and Tailwind CSS — building fast, responsive, SEO-optimized websites.",
+    description: details.about || "Subhan Anwer is a frontend developer in Karachi specializing in Next.js, React, and Tailwind CSS — building fast, responsive, SEO-optimized websites.",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Karachi",
+      addressLocality: details.address || "Karachi",
       addressCountry: "PK",
     },
-    email: "subhananwersheikh@gmail.com",
-    telephone: "+92-319-2312746",
+    email: details.email || "subhananwersheikh@gmail.com",
+    telephone: details.phoneNumber || "+92-319-2312746",
     knowsAbout: [
       "Next.js",
       "React",
@@ -31,15 +35,32 @@ export default function JsonLd() {
       "CSS",
     ],
     sameAs: [
-      "https://github.com/Subhan-Anwer",
-      "https://linkedin.com/in/subhan-anwer",
+      details.githubUrl || "https://github.com/Subhan-Anwer",
+      details.linkedinUrl || "https://linkedin.com/in/subhan-anwer",
     ],
+    worksFor: { "@type": "Organization", name: "Freelance" },
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Frontend Developer",
+      occupationLocation: { "@type": "City", name: "Karachi" }
+    }
+  };
+
+  const websiteSchema = {
+    "@type": "WebSite",
+    name: details.name ? `${details.name} - Portfolio` : "Subhan Anwer Portfolio",
+    url: SITE_URL,
+  };
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [personSchema, websiteSchema],
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 }
