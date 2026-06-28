@@ -24,7 +24,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
       repeat: Infinity,
       repeatType: "mirror",
     });
-  }, []);
+  }, [color]);
 
   const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`;
   const border = useMotionTemplate`1px solid ${color}`;
@@ -51,8 +51,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
         </h1>
         {/* SEO tags - Not Visible */}
         <p className="sr-only">
-          Frontend Developer in Karachi, Website Developer, Next.js Expert,
-          Tailwind CSS UI Designer, JavaScript Coder, Subhan Anwer Portfolio
+          Welcome to the portfolio of Subhan Anwer, a professional Frontend Developer based in Karachi, specializing in Next.js, Tailwind CSS, and modern web development.
         </p>
 
         {personalDetails.profileImage && (
