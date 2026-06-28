@@ -61,6 +61,7 @@ const Hero = ({ personalDetails }: { personalDetails: PersonalDetails }) => {
             alt="Subhan Anwer profile photo - frontend website developer"
             width={250}
             height={250}
+            sizes="250px"
             loading="eager"
             fetchPriority="high"
           />
