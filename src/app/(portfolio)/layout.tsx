@@ -80,7 +80,9 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased bg-black`}>
         <JsonLd />
         <main>
-          <Navbar />
+          <header>
+            <Navbar />
+           </header>
           {children}
           <Footer />
         </main>
