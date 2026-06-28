@@ -11,7 +11,7 @@ const baseImages = [
   },
 ];
 
-const images = Array.from({ length: 50 }, () => baseImages).flat();
+const images = Array.from({ length: 12 }, () => baseImages).flat();
 
 const LogoAnimation = () => {
     return (
