@@ -121,6 +121,7 @@ const PortfolioSection = ({ projects }: { projects: FeaturedProjects[] }) => {
               <Link
                 href={selectedProject.link || "#"}
                 target="_blank"
+                rel="noopener noreferrer nofollow"
                 className="inline-block px-8 py-3 bg-purple-400 rounded-full font-semibold hover:bg-purple-500 text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105"
               >
                 View Project
@@ -206,6 +207,7 @@ const PortfolioSection = ({ projects }: { projects: FeaturedProjects[] }) => {
                   <Link
                     href={selectedProject.link || "#"}
                     target="_blank"
+                    rel="noopener noreferrer nofollow"
                     className="w-full h-full flex items-center justify-center group"
                   >
                     <div className="relative w-full h-full rounded-xl overflow-hidden flex items-center justify-center">
